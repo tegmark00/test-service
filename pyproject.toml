@@ -1,0 +1,18 @@
+[tool.poetry]
+name = "tech-assignment"
+version = "0.1.0"
+description = ""
+authors = ["Mark B. <mark.bobkov.13@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+django = "^5.0.2"
+
+
+[tool.poetry.group.dev.dependencies]
+pre-commit = "^3.6.2"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
