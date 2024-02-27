@@ -8,6 +8,14 @@ readme = "README.md"
 [tool.poetry.dependencies]
 python = "^3.12"
 django = "^5.0.2"
+python-dotenv = "^1.0.1"
+django-phonenumber-field = "^7.3.0"
+phonenumbers = "^8.13.31"
+djangorestframework = "^3.14.0"
+markdown = "^3.5.2"
+django-filter = "^23.5"
+drf-spectacular = {extras = ["sidecar"], version = "^0.27.1"}
+drf-standardized-errors = {extras = ["openapi"], version = "^0.12.6"}
 
 
 [tool.poetry.group.dev.dependencies]
