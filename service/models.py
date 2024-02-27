@@ -43,13 +43,10 @@ class Operator(models.Model):
 
 class Request(models.Model):
     body = models.TextField()
-
     status = models.CharField(
         max_length=10, choices=RequestStatus.choices, default=RequestStatus.Pending
     )
-
     client = models.ForeignKey(Client, on_delete=models.RESTRICT)
-
     processed_by = models.ForeignKey(
         Operator, on_delete=models.RESTRICT, null=True, blank=True
     )
@@ -61,10 +58,10 @@ class Request(models.Model):
             ),
             models.CheckConstraint(
                 check=models.Q(
-                    models.Q(status=RequestStatus.Pending)
-                    | models.Q(processed_by__isnull=False)
+                    models.Q(processed_by__isnull=False)
+                    | models.Q(status=RequestStatus.Pending)
                 ),
-                name="processed_by_only_if_completed",
+                name="processed_by_or_pending",
             ),
         ]
 
