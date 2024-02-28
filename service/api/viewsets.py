@@ -23,6 +23,7 @@ class ClientViewSet(viewsets.ModelViewSet):
                 detail="Cannot delete client with existing requests",
                 code="requests_exist",
             )
+        return super().perform_destroy(instance)
 
 
 class RequestViewSet(viewsets.ModelViewSet):
