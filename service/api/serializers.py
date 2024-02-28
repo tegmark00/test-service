@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from service.models import Client, Request
+from service.models import Client, Request, Operator
 
 
 class ClientSerializer(serializers.ModelSerializer):
@@ -21,6 +21,16 @@ class ClientSerializer(serializers.ModelSerializer):
         )
 
 
+class OperatorSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Operator
+        fields = (
+            "id",
+            "first_name",
+            "last_name",
+        )
+
+
 class RequestSerializer(serializers.ModelSerializer):
     """
     TODO: clarify who can change the status and processed_by fields
@@ -32,6 +42,9 @@ class RequestSerializer(serializers.ModelSerializer):
         write_only=True,
     )
     client = ClientSerializer(read_only=True)
+    processed_by = OperatorSerializer(
+        read_only=True, required=False, allow_null=True, default=None
+    )
 
     class Meta:
         model = Request
