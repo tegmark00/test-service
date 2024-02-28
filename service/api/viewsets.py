@@ -36,7 +36,7 @@ class ClientViewSet(viewsets.ModelViewSet):
 
 
 class RequestViewSet(viewsets.ModelViewSet):
-    queryset = service_models.Request.objects.all()
+    queryset = service_models.Request.objects.select_related("client", "processed_by")
     serializer_class = service_serializers.RequestSerializer
 
     filter_backends = [DjangoFilterBackend]
